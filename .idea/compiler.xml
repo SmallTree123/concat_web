@@ -11,6 +11,7 @@
         <module name="rabbitmq" />
         <module name="sharding_jdbc" />
         <module name="my_rabbitmq" />
+        <module name="my_websocket" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8" />
