@@ -9,6 +9,8 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/my_dubbo/order_service_consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/my_dubbo/user_service_provider/pom.xml" />
         <option value="$PROJECT_DIR$/rabbitmq/pom.xml" />
       </set>
     </option>

@@ -12,6 +12,8 @@
         <module>sharding_jdbc</module>
         <module>my_rabbitmq</module>
         <module>my_websocket</module>
+        <module>my_redis</module>
+        <module>my_dubbo</module>
     </modules>
 
     <dependencyManagement>

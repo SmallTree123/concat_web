@@ -8,12 +8,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="rabbitmq" />
+        <module name="dubbo-samples-springcloud-consumer" />
+        <module name="dubbo-samples-springcloud-api" />
         <module name="sharding_jdbc" />
         <module name="my_rabbitmq" />
         <module name="my_websocket" />
+        <module name="rabbitmq" />
+        <module name="dubbo-samples-springcloud-provider" />
+        <module name="my_redis" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8" />
+    <bytecodeTargetLevel target="8">
+      <module name="order_service_consumer" target="1.8" />
+      <module name="user_service_provider" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
