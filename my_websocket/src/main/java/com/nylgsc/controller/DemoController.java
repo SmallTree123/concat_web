@@ -31,9 +31,18 @@ public class DemoController {
      * @return
      * @throws IOException
      */
-    @RequestMapping("/push/{toUserId}")
-    public ResponseEntity<String> pushToWeb(String message, @PathVariable String toUserId) throws IOException {
-        WebSocketServer.sendInfo(message,toUserId);
+    @RequestMapping("/push/{toUserId}/{message}")
+    public ResponseEntity<String> pushToWeb(@PathVariable String message, @PathVariable String toUserId) throws IOException {
+        int count = 10;
+        while (count>0){
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            WebSocketServer.sendInfo(message+"-->"+count,toUserId);
+            count--;
+        }
         return ResponseEntity.ok("消息发送成功...");
     }
 }

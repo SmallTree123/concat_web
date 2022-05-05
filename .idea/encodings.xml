@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/my_dubbo/dubbo-samples-springcloud-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/my_dubbo/dubbo-samples-springcloud-consumer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/my_dubbo/dubbo-samples-springcloud-provider/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/my_mycat/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/my_rabbitmq/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/my_redis/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/my_seata/seata_account/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/my_seata/seata_storage/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/my_springsecurity/common/service_base/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/my_springsecurity/common/spring_security/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/my_springsecurity/infrastructure/api_gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/my_springsecurity/service/service_acl/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/my_websocket/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/my_分片上传_秒传/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sharding_jdbc/src/main/java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
