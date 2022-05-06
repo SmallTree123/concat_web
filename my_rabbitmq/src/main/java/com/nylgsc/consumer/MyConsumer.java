@@ -12,16 +12,16 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
-public class MyConsumer {
-
-
-    @RabbitListener(queuesToDeclare = @Queue(QueueConstant.FIRST_RABBITMQ_MESSAGE))
-    public void handleMessage(String message){
-        System.out.println("------------消费者接收到消息---------------");
-        List<Integer> list  = (List<Integer>) JSONObject.parse(message);
-        System.out.println(list.toString());
-    }
-
-
-}
+//@Component
+//public class MyConsumer {
+//
+//
+//    @RabbitListener(queuesToDeclare = @Queue(QueueConstant.FIRST_RABBITMQ_MESSAGE))
+//    public void handleMessage(String message){
+//        System.out.println("------------消费者接收到消息---------------");
+//        List<Integer> list  = (List<Integer>) JSONObject.parse(message);
+//        System.out.println(list.toString());
+//    }
+//
+//
+//}

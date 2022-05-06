@@ -16,10 +16,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.locks.ReentrantLock;
@@ -46,11 +43,13 @@ public class UploadController {
 //
 //        List list = new CopyOnWriteArrayList();
 //        list.add();
-        List<String> arrayList = new ArrayList<>(1);
-        arrayList.add("1");
-        arrayList.add("2");
-        HashMap<Object, Object> hashMap = new HashMap<>();
+//        List<String> arrayList = new ArrayList<>(1);
+//        arrayList.add("1");
+//        arrayList.add("2");
+//        HashMap<Object, Object> hashMap = new HashMap<>();
 //        hashMap.put();
+//        Map map = new LinkedHashMap<>();
+
 
     }
 
