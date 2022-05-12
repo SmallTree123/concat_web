@@ -17,8 +17,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.*;
 import java.util.concurrent.locks.ReentrantLock;
 
 @CrossOrigin
@@ -38,19 +37,31 @@ public class UploadController {
 //        ConcurrentHashMap map =new ConcurrentHashMap();
 //        map.put();
 //        map.get();
-//        ReentrantLock reentrantLock  = new ReentrantLock();
-//        reentrantLock.lock();
+        ReentrantLock reentrantLock  = new ReentrantLock();
+        reentrantLock.lock();
+        reentrantLock.lockInterruptibly();
+        ThreadLocal tl = new ThreadLocal();
+        tl.set();
 //
 //        List list = new CopyOnWriteArrayList();
 //        list.add();
 //        List<String> arrayList = new ArrayList<>(1);
 //        arrayList.add("1");
 //        arrayList.add("2");
-//        HashMap<Object, Object> hashMap = new HashMap<>();
-//        hashMap.put();
+        HashMap<Object, Object> hashMap = new HashMap<>();
+        hashMap.put();
 //        Map map = new LinkedHashMap<>();
-
-
+        HashSet<Object> set = new HashSet<>();
+        set.add();
+        ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor();
+        poolExecutor.submit(new FutureTask<>(new Callable<Object>() {
+            @Override
+            public Object call() throws Exception {
+                return null;
+            }
+        }));
+        LinkedBlockingQueue<Object> queue = new LinkedBlockingQueue<>();
+        queue.offer();
     }
 
     public static void main(String[] args) {

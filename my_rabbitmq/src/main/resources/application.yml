@@ -1,6 +1,9 @@
 server:
   port: 8080
 spring:
+  redis:
+    host: 192.168.1.9
+    port: 6379
   rabbitmq:
     host: 192.168.1.9
     port: 5672

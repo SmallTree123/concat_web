@@ -8,7 +8,7 @@
  * @date: 2020年1月6日 上午10:56:33
  * @version: V1.0
  */
-package com.nylgsc.constant;
+package com.nylgsc.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,28 +33,6 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitmqConfig {
     private static final Logger log = LoggerFactory.getLogger(RabbitmqConfig.class);
 
-    @Autowired
-    private CachingConnectionFactory connectionFactory;
-
-	/**
-     * 单一消费者
-     *
-     * @return
-     */
-    @Bean(name = "singleListenerContainer")
-    public SimpleRabbitListenerContainerFactory listenerContainer() {
-        SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
-        factory.setConnectionFactory(connectionFactory);
-        factory.setMessageConverter(new Jackson2JsonMessageConverter());
-        factory.setConcurrentConsumers(1);
-        factory.setMaxConcurrentConsumers(1);
-        factory.setPrefetchCount(1);
-        factory.setTxSize(1);
-        //设置手动确认消息
-        factory.setAcknowledgeMode(AcknowledgeMode.MANUAL);
-        return factory;
-    }
-
     /**
      * 单一消费者
      * 声明交换机
@@ -76,19 +54,4 @@ public class RabbitmqConfig {
         return factory;
     }
 
-    @Bean
-    public RabbitTemplate rabbitTemplate() {
-        //打开发送方的确认模式
-        connectionFactory.setPublisherConfirms(true);
-        connectionFactory.setPublisherReturns(true);
-        RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-        rabbitTemplate.setMandatory(true);
-        //设置一个回调函数
-        rabbitTemplate.setConfirmCallback((correlationData, ack, cause) ->
-				log.info("消息发送成功:correlationData({}),ack({}),cause({})", correlationData, ack, cause));
-        rabbitTemplate.setReturnCallback((message, replyCode, replyText, exchange, routingKey) ->
-				log.info("消息丢失:exchange({}),route({}),replyCode({}),replyText({}),message:{}", exchange, routingKey, replyCode, replyText,
-                message));
-        return rabbitTemplate;
-    }
 }
