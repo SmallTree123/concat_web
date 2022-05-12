@@ -39,9 +39,10 @@ public class UploadController {
 //        map.get();
         ReentrantLock reentrantLock  = new ReentrantLock();
         reentrantLock.lock();
-        reentrantLock.lockInterruptibly();
-        ThreadLocal tl = new ThreadLocal();
-        tl.set();
+//        reentrantLock.lockInterruptibly();
+//        ThreadLocal tl = new ThreadLocal();
+//        tl.set();
+
 //
 //        List list = new CopyOnWriteArrayList();
 //        list.add();
@@ -49,11 +50,11 @@ public class UploadController {
 //        arrayList.add("1");
 //        arrayList.add("2");
         HashMap<Object, Object> hashMap = new HashMap<>();
-        hashMap.put();
+//        hashMap.put();
 //        Map map = new LinkedHashMap<>();
         HashSet<Object> set = new HashSet<>();
-        set.add();
-        ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor();
+//        set.add();
+        ExecutorService poolExecutor = Executors.newSingleThreadExecutor();
         poolExecutor.submit(new FutureTask<>(new Callable<Object>() {
             @Override
             public Object call() throws Exception {
