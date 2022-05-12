@@ -63,6 +63,8 @@ public class UploadController {
         }));
         LinkedBlockingQueue<Object> queue = new LinkedBlockingQueue<>();
         queue.offer();
+        queue.remove();
+
     }
 
     public static void main(String[] args) {
