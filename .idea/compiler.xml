@@ -20,6 +20,7 @@
         <module name="my_分片上传_秒传" />
         <module name="my_redis" />
         <module name="service_acl" />
+        <module name="design_model" />
         <module name="my_rabbitmq" />
         <module name="dubbo-samples-springcloud-api" />
         <module name="my_websocket" />
@@ -34,6 +35,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api_gateway" options="-parameters" />
+      <module name="design_model" options="-parameters" />
       <module name="dubbo-samples-springcloud-api" options="-parameters" />
       <module name="dubbo-samples-springcloud-consumer" options="-parameters" />
       <module name="dubbo-samples-springcloud-provider" options="-parameters" />

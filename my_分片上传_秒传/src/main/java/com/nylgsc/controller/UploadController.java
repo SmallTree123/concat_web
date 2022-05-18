@@ -5,6 +5,7 @@ import com.nylgsc.test.C;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
 import org.aspectj.weaver.ast.Test;
+import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.*;
@@ -62,16 +61,20 @@ public class UploadController {
             }
         }));
         LinkedBlockingQueue<Object> queue = new LinkedBlockingQueue<>();
-        queue.offer();
+//        queue.offer();
         queue.remove();
         System.out.println("hello");
     }
 
     public static void main(String[] args) {
+        int i =0;
+        System.out.println(++i);
         List<String> arrayList = new ArrayList<>(1);
         arrayList.add("1");
         arrayList.add("2");
-        arrayList.get(1);
+//        arrayList.get(1);
+
+        SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean(new FileInputStream(),);
     }
 
     public static int test(){
