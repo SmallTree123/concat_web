@@ -26,6 +26,8 @@
         <module>my_mycat</module>
         <module>my_分片上传_秒传</module>
         <module>design_model</module>
+        <module>sgga_websocket</module>
+        <module>my_fileServer</module>
     </modules>
 
     <dependencyManagement>

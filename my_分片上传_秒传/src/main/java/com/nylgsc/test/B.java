@@ -1,7 +1,8 @@
 package com.nylgsc.test;
 
-public interface B {
+public interface B extends D2{
     public void say();
+    int name = 0;
 
     public abstract void test();
 

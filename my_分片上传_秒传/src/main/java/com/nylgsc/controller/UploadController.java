@@ -7,6 +7,7 @@ import org.apache.commons.io.FileUtils;
 import org.aspectj.weaver.ast.Test;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,12 +19,16 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/upload")
 public class UploadController {
 
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @Autowired
     UserServiceImpl userService;
@@ -66,30 +71,35 @@ public class UploadController {
         System.out.println("hello");
     }
 
+    @GetMapping(value = "/sm2")
+    public String sm2(){
+        redisTemplate.delete("hello");
+        return "SM2";
+    }
+    @GetMapping(value = "/sm/hello")
+    public String smHello(){
+        return "SM";
+    }
+
     public static void main(String[] args) {
-        int i =0;
-        System.out.println(++i);
-        List<String> arrayList = new ArrayList<>(1);
-        arrayList.add("1");
-        arrayList.add("2");
-//        arrayList.get(1);
+        ArrayList<Object> excludes = new ArrayList<>();
+        String url = "/upload/sm/hello";
+        excludes.add("/upload/sm/*");
+        Iterator var4 = excludes.iterator();
+        boolean matches = false;
+        Matcher m;
+        do {
+            if (!var4.hasNext()) {
+                System.out.println("打印false");
+            }
 
-        SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean(new FileInputStream(),);
+            Object pattern = var4.next();
+            Pattern p = Pattern.compile(pattern+"");
+            m = p.matcher(url);
+            matches = m.matches();
+        } while(!matches);
+
+        System.out.println("matches---->"+matches);
     }
-
-    public static int test(){
-        int a = 0;
-        try {
-            a++;
-            int b=1/0;
-        } catch (Exception e) {
-            return a;
-        } finally {
-            a=3;
-            System.out.println(a);
-        }
-        return -1;
-    }
-
 
 }
