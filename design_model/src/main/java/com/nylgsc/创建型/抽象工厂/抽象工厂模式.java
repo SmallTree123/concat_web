@@ -29,7 +29,6 @@ public class 抽象工厂模式 {
 
     }
 }
-
 interface Iphone{
     void start();
     void shutdown();

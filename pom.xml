@@ -21,6 +21,7 @@
         <module>my_websocket</module>
         <module>my_redis</module>
         <module>my_dubbo</module>
+        <module>my_fileServer</module>
         <module>my_springsecurity</module>
         <module>my_seata</module>
         <module>my_mycat</module>
