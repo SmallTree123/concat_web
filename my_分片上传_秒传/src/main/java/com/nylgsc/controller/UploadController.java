@@ -1,23 +1,20 @@
 package com.nylgsc.controller;
 
 import com.nylgsc.TestAop.UserServiceImpl;
-import com.nylgsc.test.C;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.io.FileUtils;
-import org.aspectj.weaver.ast.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.locks.ReentrantLock;
 
 @CrossOrigin
@@ -33,7 +30,7 @@ public class UploadController {
     private static final Object[] b = {};
 
     @PostMapping("/part")
-    public void bigFile(HttpServletRequest request, HttpServletResponse response, String guid, Integer chunk, MultipartFile file, Integer chunks) {
+    public void bigFile(HttpServletRequest request, HttpServletResponse response, String guid, Integer chunk, MultipartFile file, Integer chunks) throws Exception {
 //        ConcurrentHashMap map =new ConcurrentHashMap();
 //        map.put();
 //        map.get();
@@ -41,7 +38,6 @@ public class UploadController {
         reentrantLock.lock();
         reentrantLock.lockInterruptibly();
         ThreadLocal tl = new ThreadLocal();
-        tl.set();
 //
 //        List list = new CopyOnWriteArrayList();
 //        list.add();
@@ -49,19 +45,18 @@ public class UploadController {
 //        arrayList.add("1");
 //        arrayList.add("2");
         HashMap<Object, Object> hashMap = new HashMap<>();
-        hashMap.put();
+        hashMap.put(12,12);
 //        Map map = new LinkedHashMap<>();
         HashSet<Object> set = new HashSet<>();
-        set.add();
-        ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor();
-        poolExecutor.submit(new FutureTask<>(new Callable<Object>() {
-            @Override
-            public Object call() throws Exception {
-                return null;
-            }
-        }));
+        set.add(1);
+//        ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(12);
+//        poolExecutor.submit(new FutureTask<>(new Callable<Object>() {
+//            @Override
+//            public Object call() throws Exception {
+//                return null;
+//            }
+//        }));
         LinkedBlockingQueue<Object> queue = new LinkedBlockingQueue<>();
-        queue.offer();
     }
 
     public static void main(String[] args) {

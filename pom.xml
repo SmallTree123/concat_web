@@ -25,6 +25,7 @@
         <module>my_seata</module>
         <module>my_mycat</module>
         <module>my_分片上传_秒传</module>
+        <module>my_upload</module>
     </modules>
 
     <dependencyManagement>

@@ -1,9 +1,6 @@
 package com.nylgsc.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.MessageProperties;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -12,12 +9,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.UUID;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingDeque;
 
 @Component
 public class MyConsumer {
@@ -65,6 +57,11 @@ public class MyConsumer {
 
         redisTemplate.opsForValue().set(messageId,messageId);
     }
+
+    public static void main(String[] args) throws Exception{
+
+    }
+
 
 
 }
