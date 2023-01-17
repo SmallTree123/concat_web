@@ -1,6 +1,8 @@
 package com.nylgsc.controller;
 
+import com.nylgsc.anno.UseAnnotation;
 import org.apache.commons.collections4.ListUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,8 +11,10 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.text.ParseException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -226,30 +230,11 @@ public class UploadController {
         }
         return null;
     }
+    @Autowired
+    public UseAnnotation annotation;
 
-    public static void main(String[] args) throws ParseException {
-//        String s = "A or ((B1 or B2) and C and D)";
-//        System.out.println(s.replaceAll("[A-Z][0-9]*", "{$0}"));
-//        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
-//        String preDate = "2022-12-20";
-//        Calendar calendar = Calendar.getInstance();
-//        //把当前时间赋给日历
-//        calendar.setTime(sdf.parse(preDate));
-//        calendar.add(Calendar.DAY_OF_MONTH, -14);
-//        String format = sdf.format(calendar.getTime());
-//        System.out.println(format);
-//
-//
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//        Calendar calendar =Calendar.getInstance();
-//        calendar.setTime(new Date());
-//        calendar.add(Calendar.DAY_OF_YEAR, -0);
-//        System.out.println(sdf.format(calendar.getTime()));
-//        calendar.add(Calendar.DAY_OF_YEAR, -10);
-//        System.out.println(sdf.format(calendar.getTime()));
+    public static void main(String[] args){
 
-        HashMap<Object, Object> map = new HashMap<>();
-        HashMap<Object, Object> result = new HashMap<>();
     }
 
 }

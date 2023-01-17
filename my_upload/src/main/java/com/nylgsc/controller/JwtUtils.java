@@ -5,7 +5,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
@@ -27,7 +26,7 @@ public class JwtUtils {
      * 注入key，set方法不能是static
      * @param secretKey
      */
-    @Value("${jjwt.key}")
+//    @Value("${jjwt.key}")
     public void setSecretKey(String secretKey) {
         JwtUtils.secretKey = secretKey;
     }

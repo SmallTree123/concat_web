@@ -1,0 +1,2 @@
+org.springframework.context.ApplicationContextInitializer=com.nylgsc.config.MyApplicationContextInitializer
+org.springframework.context.ApplicationListener=com.nylgsc.config.MyApplicationListener

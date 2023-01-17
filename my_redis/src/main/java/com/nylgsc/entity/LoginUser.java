@@ -1,6 +1,5 @@
 package com.nylgsc.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -42,6 +41,6 @@ public class LoginUser implements Serializable {
     /**
      * 用户信息
      */
-    private UserInfoVo user;
+//    private UserInfoVo user;
 
 }
