@@ -49,14 +49,14 @@ public class TokenFilter extends OncePerRequestFilter {
             LoginUser user = tokenService.getLoginUser(request);
             if(user == null){
                 throw new RuntimeException("页面过期，请关闭页面，请重新进入");
-                return;
+//                return;
             }
-            tokenService.verifyToken(user);
-            LoginUserContextHolder.setLoginUser(user);
+//            tokenService.verifyToken(user);
+//            LoginUserContextHolder.setLoginUser(user);
         }
         // 3.其他情况放开过滤
         filterChain.doFilter(request, response);
-        LoginUserContextHolder.remove();
+//        LoginUserContextHolder.remove();
     }
 
 
