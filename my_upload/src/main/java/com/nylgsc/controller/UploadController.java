@@ -24,6 +24,11 @@ import java.util.concurrent.Future;
 public class UploadController {
 
 
+    @GetMapping("/aspect")
+    public void testAspect(){
+        System.out.println("aspect");
+    }
+
     @PostMapping("/upload")
     public void test(MultipartFile file,HttpServletRequest request){
         System.out.println("==============开始导入企业表数据====================userid={}");
