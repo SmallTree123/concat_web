@@ -5,6 +5,7 @@ import org.apache.commons.collections4.ListUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,8 +25,8 @@ import java.util.concurrent.Future;
 public class UploadController {
 
 
-    @GetMapping("/aspect")
-    public void testAspect(){
+    @PostMapping("/aspect")
+    public void testAspect(@RequestBody UserParam userParam){
         System.out.println("aspect");
     }
 
@@ -239,7 +240,8 @@ public class UploadController {
     public UseAnnotation annotation;
 
     public static void main(String[] args){
-
+        Integer num = 0;
+        System.out.println(num);
     }
 
 }
