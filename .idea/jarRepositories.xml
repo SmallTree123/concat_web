@@ -2,34 +2,14 @@
 <project version="4">
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
-      <option name="id" value="nexus-aibaoxian-releases" />
-      <option name="name" value="nexus-aibaoxian-releases" />
-      <option name="url" value="http://139.224.139.74:8081/repository/maven-public/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="central" />
-      <option name="name" value="Central Repository" />
-      <option name="url" value="http://uk.maven.org/maven2/" />
-    </remote-repository>
-    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />
-      <option name="name" value="Maven Central repository" />
-      <option name="url" value="https://repo1.maven.org/maven2" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="nexus-aibaoxian-snapshots" />
-      <option name="name" value="nexus-aibaoxian-snapshots" />
-      <option name="url" value="http://139.224.139.74:8081/repository/maven-snapshots/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="jboss.community" />
-      <option name="name" value="JBoss Community repository" />
-      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="http://183.24.159.173/repository/maven-group/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="nexus" />
@@ -39,7 +19,27 @@
     <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
-      <option name="url" value="http://183.24.159.173/repository/maven-group/" />
+      <option name="url" value="http://uk.maven.org/maven2/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="nexus-aibaoxian-releases" />
+      <option name="name" value="nexus-aibaoxian-releases" />
+      <option name="url" value="http://139.224.139.74:8081/repository/maven-public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central repository" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="nexus-aibaoxian-snapshots" />
+      <option name="name" value="nexus-aibaoxian-snapshots" />
+      <option name="url" value="http://139.224.139.74:8081/repository/maven-snapshots/" />
     </remote-repository>
   </component>
 </project>
