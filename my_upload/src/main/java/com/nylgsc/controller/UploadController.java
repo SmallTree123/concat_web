@@ -1,21 +1,25 @@
 package com.nylgsc.controller;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.nylgsc.anno.UseAnnotation;
 import org.apache.commons.collections4.ListUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.awt.image.BufferedImage;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -239,9 +243,130 @@ public class UploadController {
     @Autowired
     public UseAnnotation annotation;
 
-    public static void main(String[] args){
-        Integer num = 0;
-        System.out.println(num);
+    private static final int BLACK = 0xFF000000;
+    private static final int WHITE = 0xFFFFFFFF;
+
+    public  static OutputStream getBase64QRCode(String content) throws Exception {
+        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+        @SuppressWarnings("rawtypes")
+        Map hints = new HashMap();
+
+        //设置二维码四周白色区域的大小
+        hints.put(EncodeHintType.MARGIN,1);
+        //设置二维码的容错性
+        hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
+        //画二维码
+        BitMatrix bitMatrix = multiFormatWriter.encode(content, BarcodeFormat.QR_CODE, 400, 400, hints);
+        BufferedImage image = toBufferedImage(bitMatrix);
+//        //注意此处拿到字节数据
+       OutputStream outputStream =imageToBytes(image,"jpg");
+        return outputStream;
+//        //Base64编码
+//        return Base64.getEncoder().encodeToString(bytes);
     }
 
+    public static BufferedImage toBufferedImage(BitMatrix matrix) {
+        int width = matrix.getWidth();
+        int height = matrix.getHeight();
+        BufferedImage image = new BufferedImage(width, height,
+                BufferedImage.TYPE_INT_RGB);
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                image.setRGB(x, y, matrix.get(x, y) ? BLACK : WHITE);
+            }
+        }
+        return image;
+    }
+
+    /**
+     * 转换BufferedImage 数据为byte数组
+     *
+     * @param bImage
+     * Image对象
+     * @param format
+     * image格式字符串.如"gif","png"
+     * @return byte数组
+     */
+    public static OutputStream imageToBytes(BufferedImage bImage, String format) {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        try {
+            ImageIO.write(bImage, format, out);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return out;
+    }
+
+    public static void main(String[] args) throws ParseException {
+//        LocalDate date = LocalDate.now();
+//        LocalDate lastMonth = LocalDate.now().minusMonths(1); // 当前月份减1
+//        LocalDate firstDay = lastMonth.with(TemporalAdjusters.firstDayOfMonth()); // 获取当前月的第一天
+//        LocalDate lastDay = lastMonth.with(TemporalAdjusters.lastDayOfMonth()); // 获取当前月的最后一天
+//        System.out.println(date);
+//        System.out.println(firstDay);
+//        System.out.println(lastDay);
+//        List<String> dataList = new ArrayList<>();
+//        dataList.add("he");
+//        dataList.add("hewod");
+//        dataList.add("123llo");
+//        dataList.add("234llo");
+//        List<List<String>> lists = fixedGrouping(dataList, 500);
+//        int[] arr = {1,2,3};
+//        if (arr.length == 3){
+//            System.out.println("true");
+//        }
+//        String date = "2023-01";
+//        LocalDate dateTime = LocalDate.parse(date+"-01");
+//        LocalDate firstDay = dateTime.with(TemporalAdjusters.firstDayOfMonth());
+//        LocalDate lastDay = dateTime.with(TemporalAdjusters.lastDayOfMonth());
+//        System.out.println(firstDay);
+//        System.out.println(lastDay);
+//        LocalDateTime now = LocalDateTime.of(2023, 3, 29, 12, 0, 0);
+//        System.out.println("计算两个时间的差：");
+//        LocalDateTime end = LocalDateTime.now();
+//        Duration duration = Duration.between(now,end);
+//        long days = duration.toDays(); //相差的天数
+//        long hours = duration.toHours();//相差的小时数
+//        long minutes = duration.toMinutes();//相差的分钟数
+//        long millis = duration.toMillis();//相差毫秒数
+//        long nanos = duration.toNanos();//相差的纳秒数
+//        System.out.println(days);
+//        System.out.println(hours);
+//        System.out.println(minutes);
+//        String[] titles = {"省份", "地市","客户名称", "商务负责人"};
+        BigDecimal totalRemainAmount = new BigDecimal(0);
+        totalRemainAmount = totalRemainAmount.add(new BigDecimal(12.45));
+        System.out.println(totalRemainAmount.toString());
+
+    }
+
+    private static void sleepMethod() {
+        System.out.println();
+    }
+
+    @RequestMapping(value = "/getQRcode",produces = MediaType.IMAGE_JPEG_VALUE)
+    public BufferedImage getQRcode(HttpServletResponse response) throws Exception{
+        OutputStream qrCode = getBase64QRCode("我是张晨晨，我最美");
+        return ImageIO.read(new FileInputStream(qrCode.toString()));
+    }
+
+    public static <T> List<List<T>> fixedGrouping(List<T> source, int n) {
+
+        if (null == source || source.size() == 0 || n <= 0)
+            return null;
+        List<List<T>> result = new ArrayList<List<T>>();
+        int remainder = source.size() % n;
+        int size = (source.size() / n);
+        for (int i = 0; i < size; i++) {
+            List<T> subset = null;
+            subset = source.subList(i * n, (i + 1) * n);
+            result.add(subset);
+        }
+        if (remainder > 0) {
+            List<T> subset = null;
+            subset = source.subList(size * n, size * n + remainder);
+            result.add(subset);
+        }
+        return result;
+    }
 }
