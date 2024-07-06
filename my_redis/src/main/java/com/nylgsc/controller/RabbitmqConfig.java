@@ -12,16 +12,6 @@ package com.nylgsc.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.amqp.core.AcknowledgeMode;
-import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
-import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
-import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.amqp.SimpleRabbitListenerContainerFactoryConfigurer;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * @ClassName: RabbitmqConfig
@@ -29,7 +19,7 @@ import org.springframework.context.annotation.Configuration;
  * @author: chenhui
  * @date: 2020年1月6日 上午10:56:33
  */
-@Configuration
+//@Configuration
 public class RabbitmqConfig {
     private static final Logger log = LoggerFactory.getLogger(RabbitmqConfig.class);
 
@@ -42,16 +32,16 @@ public class RabbitmqConfig {
      *
      * @return
      */
-    public static final int DEFAULT_CONCURRENT = 10;
-
-    @Bean("customContainerFactory")
-    public SimpleRabbitListenerContainerFactory containerFactory(SimpleRabbitListenerContainerFactoryConfigurer configurer,
-                                                                 ConnectionFactory connectionFactory) {
-        SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
-        factory.setConcurrentConsumers(DEFAULT_CONCURRENT);
-        factory.setMaxConcurrentConsumers(DEFAULT_CONCURRENT);
-        configurer.configure(factory, connectionFactory);
-        return factory;
-    }
+//    public static final int DEFAULT_CONCURRENT = 10;
+//
+//    @Bean("customContainerFactory")
+//    public SimpleRabbitListenerContainerFactory containerFactory(SimpleRabbitListenerContainerFactoryConfigurer configurer,
+//                                                                 ConnectionFactory connectionFactory) {
+//        SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
+//        factory.setConcurrentConsumers(DEFAULT_CONCURRENT);
+//        factory.setMaxConcurrentConsumers(DEFAULT_CONCURRENT);
+//        configurer.configure(factory, connectionFactory);
+//        return factory;
+//    }
 
 }

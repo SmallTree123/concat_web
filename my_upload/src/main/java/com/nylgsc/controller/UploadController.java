@@ -17,8 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.math.BigDecimal;
-import java.text.ParseException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -297,55 +298,45 @@ public class UploadController {
         return out;
     }
 
-    public static void main(String[] args) throws ParseException {
-//        LocalDate date = LocalDate.now();
-//        LocalDate lastMonth = LocalDate.now().minusMonths(1); // 当前月份减1
-//        LocalDate firstDay = lastMonth.with(TemporalAdjusters.firstDayOfMonth()); // 获取当前月的第一天
-//        LocalDate lastDay = lastMonth.with(TemporalAdjusters.lastDayOfMonth()); // 获取当前月的最后一天
-//        System.out.println(date);
-//        System.out.println(firstDay);
-//        System.out.println(lastDay);
-//        List<String> dataList = new ArrayList<>();
-//        dataList.add("he");
-//        dataList.add("hewod");
-//        dataList.add("123llo");
-//        dataList.add("234llo");
-//        List<List<String>> lists = fixedGrouping(dataList, 500);
-//        int[] arr = {1,2,3};
-//        if (arr.length == 3){
-//            System.out.println("true");
-//        }
-//        String date = "2023-01";
-//        LocalDate dateTime = LocalDate.parse(date+"-01");
-//        LocalDate firstDay = dateTime.with(TemporalAdjusters.firstDayOfMonth());
-//        LocalDate lastDay = dateTime.with(TemporalAdjusters.lastDayOfMonth());
-//        System.out.println(firstDay);
-//        System.out.println(lastDay);
-//        LocalDateTime now = LocalDateTime.of(2023, 3, 29, 12, 0, 0);
-//        System.out.println("计算两个时间的差：");
-//        LocalDateTime end = LocalDateTime.now();
-//        Duration duration = Duration.between(now,end);
-//        long days = duration.toDays(); //相差的天数
-//        long hours = duration.toHours();//相差的小时数
-//        long minutes = duration.toMinutes();//相差的分钟数
-//        long millis = duration.toMillis();//相差毫秒数
-//        long nanos = duration.toNanos();//相差的纳秒数
-//        System.out.println(days);
-//        System.out.println(hours);
-//        System.out.println(minutes);
-//        String[] titles = {"省份", "地市","客户名称", "商务负责人"};
-        BigDecimal totalRemainAmount = new BigDecimal(0);
-        totalRemainAmount = totalRemainAmount.add(new BigDecimal(12.45));
-        System.out.println(totalRemainAmount.toString());
+    public static void main(String[] args) throws Exception {
+        Connection connection = null;
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        String url = "jdbc:mysql://127.0.0.1:3306/test_db?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false";
+        connection = DriverManager.getConnection(url, "root", "123");
+        System.out.println(connection);
+        String sql = "INSERT INTO `test_db`.`user`(`id`, `user_name`, `age`, `email`) VALUES (?,?,?,?);";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, "1");
+        statement.setString(2, "1");
+        statement.setString(3, "1");
+        statement.setString(4, "1");
+        int i = statement.executeUpdate();
+        System.out.println(i);
 
+    }
+
+    public void insert() throws Exception {
+        Connection connection = null;
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        String url = "jdbc:mysql://192.168.0.201:3306/test_db?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false";
+        connection = DriverManager.getConnection(url, "", "");
+        System.out.println(connection);
+        String sql = "INSERT INTO `test_db`.`user`(`id`, `user_name`, `age`, `email`) VALUES (?,?,?,?);";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, "1");
+        statement.setString(2, "1");
+        statement.setString(3, "1");
+        statement.setString(4, "1");
+        int i = statement.executeUpdate();
+        System.out.println(i);
     }
 
     private static void sleepMethod() {
         System.out.println();
     }
 
-    @RequestMapping(value = "/getQRcode",produces = MediaType.IMAGE_JPEG_VALUE)
-    public BufferedImage getQRcode(HttpServletResponse response) throws Exception{
+    @RequestMapping(value = "/getQRcode", produces = MediaType.IMAGE_JPEG_VALUE)
+    public BufferedImage getQRcode(HttpServletResponse response) throws Exception {
         OutputStream qrCode = getBase64QRCode("我是张晨晨，我最美");
         return ImageIO.read(new FileInputStream(qrCode.toString()));
     }
