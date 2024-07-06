@@ -29,6 +29,7 @@
         <module>my_caffeine</module>
         <module>my_xxx_job</module>
         <module>my_gateway</module>
+        <module>my_datasource</module>
     </modules>
 
     <dependencyManagement>
@@ -42,6 +43,11 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-parent</artifactId>
                 <version>1.0.4.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.3.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

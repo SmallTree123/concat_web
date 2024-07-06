@@ -14,6 +14,7 @@
         <module name="my_xxx_job" />
         <module name="dubbo-samples-springcloud-provider" />
         <module name="my_分片上传_秒传" />
+        <module name="my_datasource" />
         <module name="my_caffeine" />
         <module name="dubbo-samples-springcloud-consumer" />
         <module name="my_redis" />
@@ -33,6 +34,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
+      <module name="my_more_datasource" target="8" />
       <module name="seata_order" target="1.8" />
       <module name="untitled" target="8" />
     </bytecodeTargetLevel>
@@ -44,7 +46,9 @@
       <module name="dubbo-samples-springcloud-consumer" options="-parameters" />
       <module name="dubbo-samples-springcloud-provider" options="-parameters" />
       <module name="my_caffeine" options="-parameters" />
+      <module name="my_datasource" options="-parameters" />
       <module name="my_gateway" options="-parameters" />
+      <module name="my_more_datasource" options="-parameters" />
       <module name="my_mycat" options="-parameters" />
       <module name="my_rabbitmq" options="-parameters" />
       <module name="my_redis" options="-parameters" />
